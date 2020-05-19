@@ -1,4 +1,3 @@
-
 from calculations.homography import four_point_transform
 from calculations.output import setup_figure, animate
 from calculations.calibration import calibrate
@@ -116,6 +115,6 @@ animation = FuncAnimation(fig,
                            interval=1000 / FPS)
 
 animation.save(VIDEO_OUTPUT_PATH, dpi=DPI)
-print("Drawing complete!")
+print("Processing complete!")
 
 # -------------------------------------------------------------
