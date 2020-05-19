@@ -1,3 +1,3 @@
-# social-distancing
+# Easy Social Distancing
 
 ![](./data/results/sample.gif)
