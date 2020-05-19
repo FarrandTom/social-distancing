@@ -1,0 +1,8 @@
+{
+    "credentials": {
+        "hostname" : "<Your hostname here>",
+        "Auth"    : [ "<Your username here>", "<Your password here>" ],
+        "logLevel": 40
+},
+    "model_id": "<Your model ID here>"
+}

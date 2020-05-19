@@ -1,0 +1,11 @@
+{
+    "VIDEO_INPUT_PATH": "./data/videos/oxford_snipped.mp4",
+    "VIDEO_OUTPUT_PATH": "./data/results/output.mp4",
+    "CALIBRATION_COORDS_PATH": "./calibration_coords.json",
+    "VISUAL_INSIGHTS_CREDS_PATH": "./visual_insights_info.json",
+    "LOCAL_RUN": "True",
+    "DETECTIONS_FILE": "./data/labels/oxford_snipped_labels.json",
+    "PHYSICAL_DISTANCE": 100,
+    "REFERENCE_HEIGHT": 22.5,
+    "DPI": 300
+}
