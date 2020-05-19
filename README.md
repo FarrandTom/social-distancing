@@ -1,3 +1,3 @@
-# Easy Social Distancing
+![](./readme_images/social_distancing.jpg)
 
-![](./data/results/sample.gif)
+![](./readme_images/sample.gif)
