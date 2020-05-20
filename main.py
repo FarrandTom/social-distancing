@@ -75,7 +75,7 @@ if not LOCAL_RUN:
 else:
     print(f"Grabbing local detections file from: {Style.BRIGHT}{DETECTIONS_FILE}{Style.RESET_ALL}")
     print(f"Local run: {Fore.GREEN}{LOCAL_RUN}{Style.RESET_ALL} \n"
-          f"---------------------"
+          f"-------------------------------------------"
     )
     raw_detections = get_raw_detections(local_run=LOCAL_RUN,
                                         video_input_path=VIDEO_INPUT_PATH,

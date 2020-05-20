@@ -1,6 +1,12 @@
 import cv2
 import numpy as np
+from scipy.spatial import distance as dist
+
 import json
+from colorama import Fore, Back, Style
+from colorama import init
+init(autoreset=True)
+
 
 def get_mouse_click(event, x, y, flags, param):
     """
@@ -26,21 +32,39 @@ def get_mouse_click(event, x, y, flags, param):
         print(x, y)
 
 
-def sort_calibration_coords(calibration_coords):
+def sort_calibration_coords(pts):
     """
-    Ensures that the list of calibration coordinates is in the order that the transformation
+    Ensures that the array of calibration coordinates is in the order that the transformation
     function expects i.e. (top_left, top_right, bottom_right, bottom_left) = pts
+    Source: https://www.pyimagesearch.com/2016/03/21/ordering-coordinates-clockwise-with-python-and-opencv/
 
     Args:
-        raw_calibration_coords (list): Unsorted list of calibration coordinates
+        pts (np.array): Unsorted list of calibration coordinates
 
     Returns:
-        sorted_calibration_coords (list): Correctly ordered list of calibration coordinates
+        np.array: Correctly ordered list of calibration coordinates
     """
 
-    print("You need to write the sort_calibration_coords function Tom!")
-    # Order should be top left, top right, bottom right, bottom left
-    return calibration_coords
+    # sort the points based on their x-coordinates
+    xSorted = pts[np.argsort(pts[:, 0]), :]
+    # grab the left-most and right-most points from the sorted
+    # x-roodinate points
+    leftMost = xSorted[:2, :]
+    rightMost = xSorted[2:, :]
+    # now, sort the left-most coordinates according to their
+    # y-coordinates so we can grab the top-left and bottom-left
+    # points, respectively
+    leftMost = leftMost[np.argsort(leftMost[:, 1]), :]
+    (tl, bl) = leftMost
+    # now that we have the top-left coordinate, use it as an
+    # anchor to calculate the Euclidean distance between the
+    # top-left and right-most points; by the Pythagorean
+    # theorem, the point with the largest distance will be
+    # our bottom-right point
+    D = dist.cdist(tl[np.newaxis], rightMost, "euclidean")[0]
+    (br, tr) = rightMost[np.argsort(D)[::-1], :]
+
+    return np.array([tl, tr, br, bl], dtype="float32")
 
 
 def calibrate(frame, CALIBRATION_COORDS_PATH):
@@ -60,11 +84,25 @@ def calibrate(frame, CALIBRATION_COORDS_PATH):
     try:
         with open(CALIBRATION_COORDS_PATH) as f:
             calibration_coords = np.array(json.load(f), dtype="float32")
-
-            # NOTE: NEED TO ADD SORTING FUNCTION
             sorted_calibration_coords = sort_calibration_coords(calibration_coords)
-        return calibration_coords
+        return sorted_calibration_coords
     except FileNotFoundError:
+        print(
+            f"{Fore.RED}No existing calibration file found.{Style.RESET_ALL} \n"
+            f"You will now be prompted to calibrate the system. \n"
+            f"The system expects four points in the shape of a rectangle which it uses as reference coordinates to calculate the bird's-eye perspective. \n"
+            f"The rectangle should lie in line with the geometry of the video e.g. if there is a road running through the centre of your video, the rectangle should mirror the road's geometry. \n"
+            f"--------------------------------------------------------- \n"
+            f"There are two main assumptions to bear in mind with this implementation: \n"
+            f"1) The ground is a flat plane. \n"
+            f"2) The camera viewpoint is in a fixed position. \n"
+            f"--------------------------------------------------------- \n"
+            f"The first frame of the input video will now be displayed. \n"
+            f"Simply click where you wish the four corners of the calibration rectangle to be- a {Fore.GREEN}green{Style.RESET_ALL} dot will be placed wherever you click. \n"
+            f"Your calibration coordinates will be saved at {Style.BRIGHT}{CALIBRATION_COORDS_PATH}{Style.RESET_ALL} \n"
+            f"---------------------------------------------------------"
+        )
+
         # If .json file is not found then we populate one ourselves by propmting for user input.
         coords_list = []
         cv2.namedWindow("frame")
@@ -83,12 +121,10 @@ def calibrate(frame, CALIBRATION_COORDS_PATH):
             # NOTE: Can improve this by sorting it correctly.
             if len(coords_list) == 4:
                 calibration_coords = np.array(coords_list, dtype="float32")
-
-                # NOTE: NEED TO ADD SORTING FUNCTION
                 sorted_calibration_coords = sort_calibration_coords(calibration_coords)
 
                 # Save as a .json file.
                 with open(CALIBRATION_COORDS_PATH, 'w') as outfile:
                     json.dump(coords_list, outfile)
 
-                return calibration_coords
+                return sorted_calibration_coords
