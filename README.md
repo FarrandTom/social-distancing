@@ -127,6 +127,8 @@ If you wish to perform inference against a different service then the API calls 
 That's it, you're ready to go. :boom:
 
 # References :book:
+Special thanks to Bob Cheesebrough for his pointers while building this out!
+
 1. https://github.com/IIT-PAVIS/Social-Distancing
 2. https://www.pyimagesearch.com/2014/08/25/4-point-opencv-getperspective-transform-example/
 3. http://www.robots.ox.ac.uk/ActiveVision/Research/Projects/2009bbenfold_headpose/project.html
