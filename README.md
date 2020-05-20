@@ -9,7 +9,7 @@ It is inspired by the fantastic work done by researchers at IIT-Pavis which you 
 :point_right: Run locally using a local detections file, or call an external inference service.  
 :point_right: Already integrated into [IBM Visual Insights](https://www.ibm.com/products/ibm-visual-insights) for inference calls, and easy to rip and replace with another inference engine.
 
-Example output:
+**Example output:**
 
 ![](./readme_images/sample.gif)
 
