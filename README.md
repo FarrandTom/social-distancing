@@ -7,7 +7,7 @@ Yes, this is another social distancing implementation.
 :point_right: Run locally using a [local detections file](https://github.com/FarrandTom/social-distancing/blob/master/data/labels/oxford_snipped_labels.json), or call an external inference service.  
 :point_right: Already integrated into [IBM Visual Insights](https://www.ibm.com/products/ibm-visual-insights) for inference calls, and easy to rip and replace with another inference engine.
 
-It is inspired by the fantastic work done by researchers at IIT-Pavis which you can find [here](https://github.com/IIT-PAVIS/Social-Distancing). Special thanks to Bob Cheesebrough for his pointers while building this out!
+It is inspired by the fantastic work done by researchers at IIT-Pavis which you can find [here](https://github.com/IIT-PAVIS/Social-Distancing). Special thanks to [Bob Cheesebrough](https://github.com/zmadscientist) for his pointers while building this out!
 
 **Example output:**
 
