@@ -28,8 +28,7 @@ To add new videos you need to do the following:
 
 ## 1. Update the settings :toolbox:
 
-The main configuration file is `settings.json`. This is where the bulk of user driven settings can be tweaked and changed. This repository comes pre-populated with settings which allow you to run the tool out of the box:
-
+The main configuration file is [`settings.json`](https://github.com/FarrandTom/social-distancing/blob/master/settings.json). This is where the bulk of user driven settings can be tweaked and changed. This repository comes pre-populated with settings which allow you to run the tool out of the box:
 ```
 {
     "VIDEO_INPUT_PATH": "./data/videos/oxford_snipped.mp4",
@@ -103,11 +102,27 @@ As you then click on the first frame of your video, each of the coordinates that
 
 As soon as you have selected four points, the script will move on to the inference and drawing steps! :art:
 
-*Note: If you make a mistake simply quit the script (Cmd/ctrl + C), delete any .json file that has been created, and start again.*
+*Note: If you make a mistake simply quit the script (cmd/ctrl + C), delete any .json file that has been created, and start again.*
 
 ## 3. Infer :hourglass_flowing_sand:
 
-Depending on how you would
+If you are using detections from a local file then you will simply need to point the `DETECTIONS_FILE` variable towards that local file. Depending on the format of that local file you may need to tweak the `sort_detections` function found [here](https://github.com/FarrandTom/social-distancing/blob/master/inference/detect.py#L159). 
+
+If you have access to an [IBM Visual Insights](https://www.ibm.com/products/ibm-visual-insights) instance then the [`placeholder_creds.json`](https://github.com/FarrandTom/social-distancing/blob/master/placeholder_creds.json) file can be easily tweaked to support your credentials: 
+```
+{
+    "credentials": {
+        "hostname" : "<Your hostname here>",
+        "Auth"    : [ "<Your username here>", "<Your password here>" ],
+        "logLevel": 40
+},
+    "model_id": "<Your model ID here>"
+}
+```
+
+Your `model_id` can be found via the [Visual Insights API](http://public.dhe.ibm.com/systems/power/docs/powerai/api120.html) or when selecting a deployed model in the GUI it will be displayed in the deployed model API endpoint e.g. `https://9.196.150.153/visual-insights/api/dlapis/a17d62c5-3087-4b34-9899-6f58da4da99d` --> `"model_id": a17d62c5-3087-4b34-9899-6f58da4da99d`.
+
+If you wish to perform inference against a different service then the API calls within [`detect.py`](https://github.com/FarrandTom/social-distancing/blob/master/inference/detect.py) will have to be adapted to support the new API. I'll leave that up to you :)
 
 That's it, you're ready to go. :boom:
 
