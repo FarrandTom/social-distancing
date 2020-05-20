@@ -13,8 +13,7 @@ It is inspired by the fantastic work done by researchers at IIT-Pavis which you 
 
 ![](./readme_images/sample.gif)
 
-# Installation
-Getting up and running should be straight forward! :running::dash:
+# Get Up and Running! :running::dash:
 
 1. Clone this repository  
 `git clone https://github.com/FarrandTom/social-distancing.git`
