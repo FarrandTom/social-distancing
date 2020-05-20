@@ -21,7 +21,7 @@ It is inspired by the fantastic work done by researchers at IIT-Pavis which you 
 `conda install --file requirements.txt` or `pip install -r requirements.txt`
 3. Run `python main.py` to create an output video in `./data/results/output.mp4` based on a sample snippet of Oxford town centre saved at `./data/videos/oxford_snipped.mp4`
 
-# Usage
+# Usage :bulb:
 
 
 # References :book:
