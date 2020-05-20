@@ -16,7 +16,7 @@ It is inspired by the fantastic work done by researchers at IIT-Pavis which you 
 # Installation
 Getting up and running should be straight forward! :running::dash:
 
-1. First clone this repository  
+1. Clone this repository  
 `git clone https://github.com/FarrandTom/social-distancing.git`
 2. Install the necessary packages in your virtual environment!  
 `conda install --file requirements.txt` or `pip install -r requirements.txt`
