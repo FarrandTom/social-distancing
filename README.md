@@ -7,7 +7,7 @@ Yes, this is another social distancing implementation.
 :point_right: Run locally using a [local detections file](https://github.com/FarrandTom/social-distancing/blob/master/data/labels/oxford_snipped_labels.json), or call an external inference service.  
 :point_right: Already integrated into [IBM Visual Insights](https://www.ibm.com/products/ibm-visual-insights) for inference calls, and easy to rip and replace with another inference engine.
 
-It is inspired by the fantastic work done by researchers at IIT-Pavis which you can find [here](https://github.com/IIT-PAVIS/Social-Distancing).
+It is inspired by the fantastic work done by researchers at IIT-Pavis which you can find [here](https://github.com/IIT-PAVIS/Social-Distancing). Special thanks to Bob Cheesebrough for his pointers while building this out!
 
 **Example output:**
 
@@ -127,8 +127,6 @@ If you wish to perform inference against a different service then the API calls 
 That's it, you're ready to go. :boom:
 
 # References :book:
-Special thanks to Bob Cheesebrough for his pointers while building this out!
-
 1. https://github.com/IIT-PAVIS/Social-Distancing
 2. https://www.pyimagesearch.com/2014/08/25/4-point-opencv-getperspective-transform-example/
 3. http://www.robots.ox.ac.uk/ActiveVision/Research/Projects/2009bbenfold_headpose/project.html
