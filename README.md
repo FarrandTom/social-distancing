@@ -28,5 +28,6 @@ Getting up and running should be straight forward! :running::dash:
 1. https://github.com/IIT-PAVIS/Social-Distancing
 2. https://www.pyimagesearch.com/2014/08/25/4-point-opencv-getperspective-transform-example/
 3. http://www.robots.ox.ac.uk/ActiveVision/Research/Projects/2009bbenfold_headpose/project.html
+4. https://www.pyimagesearch.com/2016/03/21/ordering-coordinates-clockwise-with-python-and-opencv/
 
 ![](./readme_images/social_distancing.jpg)
